@@ -25,11 +25,26 @@ public class UserRegistration {
             System.out.println(firstName + " is not valid first name");
             validFirstName();
         }
+    }
 
+    public void validLastName() {
+        /**
+         * UC2 Regular expression for user last name
+         */
+        System.out.print("Enter last name (First letter upper case minimum three letters) : ");
+        String lastName = input.next();
+        boolean status = Pattern.compile("[A-Z]{1}[a-z]{2,}").matcher(lastName).matches();
+        if (status == true) {
+            System.out.println(lastName + " is valid last name");
+        } else {
+            System.out.println(lastName + " is not valid last name");
+            validLastName();
+        }
     }
 
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validFirstName();
+        user.validLastName();
     }
 }
