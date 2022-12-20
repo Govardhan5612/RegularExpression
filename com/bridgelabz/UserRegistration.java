@@ -73,11 +73,28 @@ public class UserRegistration {
         }
     }
 
+    public void validPassword() {
+        /**
+         * Regular expression for password
+         * UC5 -Rule 1 : minimum 8 characters
+         */
+        System.out.print("Enter password : ");
+        String password = input.next();
+        boolean status = Pattern.compile("^(?=.*[a-z]).{8}$").matcher(password).matches();
+        if (status == true) {
+            System.out.println(password + " is valid password");
+        } else {
+            System.out.println(password + " is not valid password");
+            validPassword();
+        }
+    }
+
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validFirstName();
         user.validLastName();
         user.valid_email();
         user.validMobileNumber();
+        user.validPassword();
     }
 }
