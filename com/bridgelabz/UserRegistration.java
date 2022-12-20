@@ -42,9 +42,26 @@ public class UserRegistration {
         }
     }
 
+    public void valid_email() {
+        /**
+         * UC3 Regula expression for email
+         * Eg :- abc.xyz@bl.co.in
+         */
+        System.out.print("Enter email id : ");
+        String email = input.next();
+        boolean status = Pattern.compile("[a-z]{3,}[.]{1}[a-z]{0,}[@]{1}[a-z]{2,}[.]{1}[co]{2}[.]{1}[in]{0,2}").matcher(email).matches();
+        if (status == true) {
+            System.out.println(email + " is valid email");
+        } else {
+            System.out.println(email + " is not valid email");
+            valid_email();
+        }
+    }
+
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validFirstName();
         user.validLastName();
+        user.valid_email();
     }
 }
