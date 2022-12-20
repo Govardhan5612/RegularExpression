@@ -47,7 +47,7 @@ public class UserRegistration {
          * UC3 Regula expression for email
          * Eg :- abc.xyz@bl.co.in
          */
-        System.out.print("Enter email id : ");
+        System.out.print("Enter email id (abc.xyz@bl.co.in) : ");
         String email = input.next();
         boolean status = Pattern.compile("[a-z]{3,}[.]{1}[a-z]{0,}[@]{1}[a-z]{2,}[.]{1}[co]{2}[.]{1}[in]{0,2}").matcher(email).matches();
         if (status == true) {
@@ -58,10 +58,26 @@ public class UserRegistration {
         }
     }
 
+    public void validMobileNumber() {
+        /**
+         * UC4 Regular expression for mobile number with country code
+         */
+        System.out.print("Enter mobile number with country code (91 9XXXXXXXXX) : ");
+        String mobileNumber = input.nextLine();
+        boolean status = Pattern.compile("[0-9]{1,3}[ ]{1}[7-9]{1}[0-9]{9}").matcher(mobileNumber).matches();
+        if (status == true) {
+            System.out.println(mobileNumber + " is valid mobile number");
+        } else {
+            System.out.println(mobileNumber + " is not valid mobile number");
+            validMobileNumber();
+        }
+    }
+
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validFirstName();
         user.validLastName();
         user.valid_email();
+        user.validMobileNumber();
     }
 }
