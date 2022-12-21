@@ -79,10 +79,11 @@ public class UserRegistration {
          * UC5 -Rule 1 : minimum 8 characters
          * UC6 -Rule 2 : minimum one upper case
          * UC7 -Rule 3 : Minimum one numeric value
+         * UC8 -Rule 4 : Exactly one special Character
          */
         System.out.print("Enter password : ");
         String password = input.next();
-        boolean status = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8}$").matcher(password).matches();
+        boolean status = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&*]).{8,}$").matcher(password).matches();
         if (status == true) {
             System.out.println(password + " is valid password");
         } else {
