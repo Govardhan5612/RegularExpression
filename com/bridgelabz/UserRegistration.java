@@ -92,6 +92,20 @@ public class UserRegistration {
         }
     }
 
+    public void emailSamples() {
+        /**
+         * UC9 : Test all email samples valid and invalid emails
+         */
+        System.out.print("Enter email : ");
+        String email = input.next();
+        boolean status = Pattern.compile("[a-z]{3,}[-.+]{0,1}[10]{0,3}[@]{1}[10]{0,3}[a-z]{0,5}[.]{0,1}[a-z]{0,3}[,.]{0,1}[a-z]{0,3}").matcher(email).matches();
+        if (status == true) {
+            System.out.println(email + " is valid email");
+        } else {
+            System.out.println(email + " is not valid email");
+        }
+    }
+
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.validFirstName();
@@ -99,5 +113,6 @@ public class UserRegistration {
         user.valid_email();
         user.validMobileNumber();
         user.validPassword();
+        user.emailSamples();
     }
 }
